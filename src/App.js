@@ -1,24 +1,28 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import Interface from "./Components/Interface";
+import { BsMoonStars, BsBrightnessHigh } from "react-icons/bs";
 
 function App() {
+  const [dark, setDark] = useState(true);
+
+  const handleTheme = () => {
+    setDark(!dark);
+  };
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+    <div className={dark ? "dark" : ""}>
+      <div className="flex flex-col items-center justify-center min-h-screen h-auto bg-gray-100 transition ease duration-500 text-center dark:bg-gray-900">
+        <h1 className="text-4xl text-black font-bold font-Libre mb-1 dark:text-white">
+          To do App
+        </h1>
+        <button
+          onClick={handleTheme}
+          className="m-3 text-3xl text-black dark:text-white"
         >
-          Learn React
-        </a>
-      </header>
+          {" "}
+          {dark ? <BsBrightnessHigh /> : <BsMoonStars />}
+        </button>
+        <Interface />
+      </div>
     </div>
   );
 }
